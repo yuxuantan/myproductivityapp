@@ -1,6 +1,8 @@
 package com.xuanz.myproductivityapp
 
-class ListItem(var name: String, var isCompleted: Boolean, var pos: Int, var id: Int) {
+import java.util.*
+
+class JournalItem(var title: String, var body: String, var date: String, var id: Int) {
 //    companion object {
 //        private var lastItemId = 0
 //        fun createItemsList(numListItems: Int, status: Boolean): ArrayList<ListItem> {

@@ -1,7 +1,7 @@
 package com.xuanz.myproductivityapp
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouchHelper.Callback() {
+class ItemMoveCallbackListener(val adapter: ToDoRecyclerAdapter) : ItemTouchHelper.Callback() {
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -24,7 +24,7 @@ class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouch
     }
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            if (viewHolder is DragDropRecyclerAdapter.ItemViewHolder) {
+            if (viewHolder is ToDoRecyclerAdapter.ItemViewHolder) {
                 adapter.onRowSelected(viewHolder)
             }
         }
@@ -32,7 +32,7 @@ class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouch
     }
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
-        if (viewHolder is DragDropRecyclerAdapter.ItemViewHolder) {
+        if (viewHolder is ToDoRecyclerAdapter.ItemViewHolder) {
             adapter.onRowClear(viewHolder)
         }
     }
@@ -40,7 +40,7 @@ class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouch
     }
     interface Listener {
         fun onRowMoved(fromPosition: Int, toPosition: Int)
-        fun onRowSelected(itemViewHolder: DragDropRecyclerAdapter.ItemViewHolder)
-        fun onRowClear(itemViewHolder: DragDropRecyclerAdapter.ItemViewHolder)
+        fun onRowSelected(itemViewHolder: ToDoRecyclerAdapter.ItemViewHolder)
+        fun onRowClear(itemViewHolder: ToDoRecyclerAdapter.ItemViewHolder)
     }
 }
